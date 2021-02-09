@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using ESimMainTasks.PageObjects;
 using System.Threading;
+using FluentAssertions;
 
 namespace ESimMainTasks.Steps
 {
@@ -43,25 +44,42 @@ namespace ESimMainTasks.Steps
 
         }
         
-        [When(@"click Train button if it is present")]
+        [When(@"click Train task button if it is present")]
         public void WhenClickTrainButtonIfItIsPresent()
         {
             var mainPage = new MainPage(webDriver);
-
             try
             {
                 mainPage.SetTrainTaskButtonn();
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.ToString());
+            }catch (Exception){
+                mainPage.SetMenuMyPlacesButton()
+                    .SetMenuTrainButton();
+
             }
 
         }
-        
+
+        [When(@"click Trenuj button")]
+        public void WhenClickTrainButton()
+        {
+            var trainPage = new TrainPage(webDriver);
+            try
+            {
+                trainPage.SetTrenujButton();
+            }
+            catch (Exception){
+            }
+
+        }
+
+
+
         [Then(@"the timer to next train should be present")]
         public void ThenTheTimerToNextTrainShouldBePresent()
         {
-            Console.WriteLine("=======================end of test====================");
+            var trainPage = new TrainPage(webDriver);
+            trainPage.TrainCheck().Should().BeTrue();
+
         }
     }
 }

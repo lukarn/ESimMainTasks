@@ -39,56 +39,58 @@ namespace ESimMainTasks.PageObjects
             WaitAndClick(this.trainTaskButton);
         }
 
-        
+        //    @FindBy(css = "a#myPlaces")
+        //private WebElement menuMyPlacesButton;
+        [FindsBy(How = How.CssSelector, Using = "a#myPlaces")]
+        private IWebElement menuMyPlacesButton { get; set; }
+
+        public MainPage SetMenuMyPlacesButton()
+        {
+            WaitAndClick(this.menuMyPlacesButton);
+
+            return this;
+        }
+
+
+        //    @FindBy(css = "a[href*='train']")
+        //private WebElement menuTrainButton;
+        [FindsBy(How = How.CssSelector, Using = "a[href*='train']")]
+        private IWebElement menuTrainButton { get; set; }
+
+        public void SetMenuTrainButton()
+        {
+            WaitAndClick(this.menuTrainButton);
+
+        }
+
+
 
 
         /////////////////////////////////////////////////
 
+        //    @FindBy(css = "a[href*='work']")
+        //private WebElement menuWorkButton;
 
-    //    @FindBy(css = "#taskButtonWork>a")
-    //private WebElement workTaskButton;
-
-    //    @FindBy(css = "a#myPlaces")
-    //private WebElement menuMyPlacesButton;
-
-    //    @FindBy(css = "a[href*='work']")
-    //private WebElement menuWorkButton;
-
-    //    @FindBy(css = "a[href*='train']")
-    //private WebElement menuTrainButton;
+        //    @FindBy(css = "#taskButtonWork>a")
+        //private WebElement workTaskButton;
 
 
 
-    //    public MainPage(WebDriver driver, int wait)
-    //    {
-    //        super(driver, wait);
-    //    }
 
-    //    public void setTrainTaskButton()
-    //    {
-    //        clickElement(this.trainTaskButton);
-    //    }
 
-    //    public void setWorkTaskButton()
-    //    {
-    //        clickElement(this.workTaskButton);
-    //    }
 
-    //    public MainPage setMenuMyPlacesButton()
-    //    {
-    //        clickElement(this.menuMyPlacesButton);
-    //        return this;
-    //    }
+        //    public void setWorkTaskButton()
+        //    {
+        //        clickElement(this.workTaskButton);
+        //    }
 
-    //    public void setMenuWorkButton()
-    //    {
-    //        clickElement(this.menuWorkButton);
-    //    }
+ 
 
-    //    public void setMenuTrainButton()
-    //    {
-    //        clickElement(this.menuTrainButton);
-    //    }
+        //    public void setMenuWorkButton()
+        //    {
+        //        clickElement(this.menuWorkButton);
+        //    }
+
 
 
 
