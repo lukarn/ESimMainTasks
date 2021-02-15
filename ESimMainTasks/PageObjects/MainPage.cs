@@ -28,9 +28,6 @@ namespace ESimMainTasks.PageObjects
             webElement.Click();
         }
 
-
-        //    @FindBy(css = "")
-        //private WebElement trainTaskButton;
         [FindsBy(How = How.CssSelector, Using = "#taskButtonTrain>a")]
         private IWebElement trainTaskButton { get; set; }
 
@@ -39,8 +36,6 @@ namespace ESimMainTasks.PageObjects
             WaitAndClick(this.trainTaskButton);
         }
 
-        //    @FindBy(css = "a#myPlaces")
-        //private WebElement menuMyPlacesButton;
         [FindsBy(How = How.CssSelector, Using = "a#myPlaces")]
         private IWebElement menuMyPlacesButton { get; set; }
 
@@ -51,28 +46,41 @@ namespace ESimMainTasks.PageObjects
             return this;
         }
 
-
-        //    @FindBy(css = "a[href*='train']")
-        //private WebElement menuTrainButton;
         [FindsBy(How = How.CssSelector, Using = "a[href*='train']")]
         private IWebElement menuTrainButton { get; set; }
-
         public void SetMenuTrainButton()
         {
             WaitAndClick(this.menuTrainButton);
 
         }
 
+        //    @FindBy(css = "a[href*='work']")
+        //private WebElement menuWorkButton;
+        [FindsBy(How = How.CssSelector, Using = "a[href*='work']")]
+        private IWebElement menuWorkButton { get; set; }
+        public void SetMenuWorkButton()
+        {
+            WaitAndClick(this.menuWorkButton);
+
+        }
+
+        //    @FindBy(css = "#taskButtonWork>a")
+        //private WebElement workTaskButton;
+        [FindsBy(How = How.CssSelector, Using = "#taskButtonWork>a")]
+        private IWebElement workTaskButton { get; set; }
+        public void SetWorkTaskButton()
+        {
+            WaitAndClick(this.workTaskButton);
+
+        }
+
+
 
 
 
         /////////////////////////////////////////////////
 
-        //    @FindBy(css = "a[href*='work']")
-        //private WebElement menuWorkButton;
 
-        //    @FindBy(css = "#taskButtonWork>a")
-        //private WebElement workTaskButton;
 
 
 
@@ -84,7 +92,7 @@ namespace ESimMainTasks.PageObjects
         //        clickElement(this.workTaskButton);
         //    }
 
- 
+
 
         //    public void setMenuWorkButton()
         //    {

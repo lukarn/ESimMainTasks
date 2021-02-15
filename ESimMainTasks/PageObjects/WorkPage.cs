@@ -9,35 +9,39 @@ using How = SeleniumExtras.PageObjects.How;
 
 namespace ESimMainTasks.PageObjects
 {
-    class TrainPage
+    class WorkPage
     {
         private IWebDriver webDriver;
 
-        public TrainPage(IWebDriver webDriver)
+        public WorkPage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
 
             PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.CssSelector, Using = "button#trainButton")]
-        private IWebElement trenujButton { get; set; }
+        //@FindBy(css = "button#workButton")
+        //private WebElement workButton;
+        [FindsBy(How = How.CssSelector, Using = "button#workButton")]
+        private IWebElement pracujButton { get; set; }
 
-        public TrainPage SetTrenujButton()
+        public WorkPage SetPracujButton()
         {
-            WaitAndClick(this.trenujButton);
+            WaitAndClick(this.pracujButton);
             return this;
         }
 
-        [FindsBy(How = How.CssSelector, Using = ".timeCountdown.greenFont")]
-        private IWebElement timeCountdown { get; set; }
+        //        @FindBy(css = "#productionReportTable>tbody>tr>#productionDisplayInTable")
+        //private WebElement workProductionResult;
+        [FindsBy(How = How.CssSelector, Using = "#productionReportTable>tbody>tr>#productionDisplayInTable")]
+        private IWebElement workProductionResult { get; set; }
 
-        private string GetTimeCountdown()
+        private string GetWorkProductionResult()
         {
-            return this.timeCountdown.Text;
+            return this.workProductionResult.Text;
         }
 
-        public bool TrainCheck()
+        public bool WorkCheck()
         {
             try
             {
@@ -45,7 +49,7 @@ namespace ESimMainTasks.PageObjects
                 
                 Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
                 // or Trace.Listeners.Add(new ConsoleTraceListener());
-                Trace.WriteLine("====To next train: " + GetTimeCountdown());
+                Trace.WriteLine("====Work results: " + GetWorkProductionResult());
 
                 return true;
             }
@@ -61,6 +65,8 @@ namespace ESimMainTasks.PageObjects
             Thread.Sleep(1000);
             webElement.Click();
         }
+
+
 
 
 

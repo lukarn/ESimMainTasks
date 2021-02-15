@@ -59,7 +59,24 @@ namespace ESimMainTasks.Steps
 
         }
 
-        [When(@"click Trenuj button")]
+        [When(@"click Work task button if it is present")]
+        public void WhenClickWorkTaskButtonIfItIsPresent()
+        {
+            var mainPage = new MainPage(webDriver);
+            try
+            {
+                mainPage.SetWorkTaskButton();
+            }
+            catch (Exception)
+            {
+                mainPage.SetMenuMyPlacesButton()
+                    .SetMenuWorkButton();
+
+            }
+        }
+
+
+        [When(@"click Trenuj button if it is present")]
         public void WhenClickTrainButton()
         {
             var trainPage = new TrainPage(webDriver);
@@ -72,6 +89,19 @@ namespace ESimMainTasks.Steps
 
         }
 
+        [When(@"click Pracuj button if it is present")]
+        public void WhenClickPracujButtonIfItIsPresent()
+        {
+            var workPage = new WorkPage(webDriver);
+            try
+            {
+                workPage.SetPracujButton();
+            }
+            catch (Exception){
+            }
+        }
+
+
 
 
         [Then(@"the timer to next train should be present")]
@@ -81,5 +111,13 @@ namespace ESimMainTasks.Steps
             trainPage.TrainCheck().Should().BeTrue();
 
         }
+
+        [Then(@"check if work results are present")]
+        public void ThenCheckIfWorkResultsArePresent()
+        {
+            var workPage = new WorkPage(webDriver);
+            workPage.WorkCheck().Should().BeTrue();
+        }
+
     }
 }

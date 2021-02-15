@@ -70,14 +70,14 @@ namespace ESimMainTasks.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Check train activityss", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("Check train activity", new string[] {
                 "train"}, SourceLine=3)]
-        public virtual void CheckTrainActivityss()
+        public virtual void CheckTrainActivity()
         {
             string[] tagsOfScenario = new string[] {
                     "train"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check train activityss", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check train activity", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -111,10 +111,60 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("click Train task button if it is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.And("click Trenuj button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("click Trenuj button if it is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
  testRunner.Then("the timer to next train should be present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Check work activity", new string[] {
+                "work"}, SourceLine=12)]
+        public virtual void CheckWorkActivity()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "work"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check work activity", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 13
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 14
+ testRunner.Given("launch browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 15
+ testRunner.And("go to BasePage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 16
+ testRunner.And("login to service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+ testRunner.When("click Work task button if it is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+ testRunner.And("click Pracuj button if it is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 19
+ testRunner.Then("check if work results are present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
