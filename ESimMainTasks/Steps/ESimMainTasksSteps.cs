@@ -13,14 +13,18 @@ namespace ESimMainTasks.Steps
     {
         IWebDriver webDriver;
 
-        
-
-        [Given(@"launch browser")]
-        public void GivenLaunchBrowser()
+        [BeforeScenario()]
+        public void BeforeScenario()
         {
+            //webDriver = new ChromeDriver();
             webDriver = new ChromeDriver("C:\\selGrid");
-
         }
+
+        //[AfterScenario("Check work activity")]
+        //public void AfterScenario()
+        //{
+        //    webDriver.Close();
+        //}
         
         [Given(@"go to BasePage")]
         public void GivenGoToBasePage()

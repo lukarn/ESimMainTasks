@@ -2,8 +2,7 @@
 
 @train
 Scenario: Check train activity
-	Given launch browser
-	And go to BasePage
+	Given go to BasePage
 	And login to service
 	When click Train task button if it is present
 	And click Trenuj button if it is present
@@ -11,8 +10,7 @@ Scenario: Check train activity
 
 @work
 Scenario: Check work activity
-	Given launch browser
-	And go to BasePage
+	Given go to BasePage
 	And login to service
 	When click Work task button if it is present
 	And click Pracuj button if it is present
