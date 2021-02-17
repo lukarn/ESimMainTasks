@@ -20,12 +20,13 @@ namespace ESimMainTasks.Steps
             webDriver = new ChromeDriver("C:\\selGrid");
         }
 
-        //[AfterScenario("Check work activity")]
-        //public void AfterScenario()
-        //{
-        //    webDriver.Close();
-        //}
-        
+        //"Check work activity"
+        [AfterScenario()]
+        public void AfterScenario()
+        {
+            webDriver.Close();
+        }
+
         [Given(@"go to BasePage")]
         public void GivenGoToBasePage()
         {
