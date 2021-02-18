@@ -22,58 +22,50 @@ namespace ESimMainTasks.PageObjects
             PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "login_section_btn")]
-        private IWebElement loginButton { get; set; }
+        private static By LoginButton => By.Id("login_section_btn");
 
         public BasePage SetLoginButton()
         {
-            WaitAndClick(this.loginButton);
+            WaitAndClick(LoginButton);
             return this;
         }
 
-        //[FindsBy(How = How.Id, Using = "registeredPlayerLogin")]
-        //public IWebElement LoginInput { get; set; }
-        [FindsBy(How = How.Id, Using = "registeredPlayerLogin")]
-        private IWebElement loginInput { get; set; }
+        private static By LoginInput => By.Id("registeredPlayerLogin");
 
         public BasePage SetLoginInput(string text)
         {
-            WaitAndClick(this.loginInput);
-            this.loginInput.SendKeys(text);
+            WaitAndSendText(LoginInput, text);
             return this;
         }
 
-
-        //[FindsBy(How = How.CssSelector, Using = "form > input[name='password']")]
-        //public IWebElement PasswordInput { get; set; }
-        //@FindBy(css = "form > input.required.valid[name='password']"),
-        //@FindBy(css = "form#bestForm > input[name='password']")
-        [FindsBy(How = How.CssSelector, Using = "form > input[name='password']")]
-        private IWebElement passwordInput { get; set; }
+        private static By PasswordInput => By.CssSelector("form > input[name='password']");
 
         public BasePage SetPasswordInput(string text)
         {
-            WaitAndClick(this.passwordInput);
-            this.passwordInput.SendKeys(text);
+            WaitAndSendText(PasswordInput, text);
             return this;
         }
 
+        private static By ZalogujButton => By.CssSelector("button.foundation-style.button.foundationButton[type='submit'][value='Login']");
 
-        //[FindsBy(How = How.CssSelector, Using = "button.foundation-style.button.foundationButton[type='submit'][value='Login']")]
-        //public IWebElement ZalogujButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "button.foundation-style.button.foundationButton[type='submit'][value='Login']")]
-        private IWebElement zalogujButton { get; set; }
 
         public void SetZalogujButton()
         {
-            WaitAndClick(this.zalogujButton);
+            WaitAndClick(ZalogujButton);
         }
 
 
-        private void WaitAndClick(IWebElement webElement)
+        private void WaitAndClick(By bySelector)
         {
             Thread.Sleep(1000);
-            webElement.Click();
+            webDriver.FindElement(bySelector).Click();
+            //webElement.Click();
+        }
+
+        private void WaitAndSendText(By bySelector, string text)
+        {
+            Thread.Sleep(1000);
+            webDriver.FindElement(bySelector).SendKeys(text);
         }
 
 

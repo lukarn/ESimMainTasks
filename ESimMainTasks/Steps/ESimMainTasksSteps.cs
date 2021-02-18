@@ -5,6 +5,8 @@ using OpenQA.Selenium.Chrome;
 using ESimMainTasks.PageObjects;
 using System.Threading;
 using FluentAssertions;
+using System.IO;
+using System.Reflection;
 
 namespace ESimMainTasks.Steps
 {
@@ -16,8 +18,10 @@ namespace ESimMainTasks.Steps
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            //webDriver = new ChromeDriver();
-            webDriver = new ChromeDriver("C:\\selGrid");
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.AddArguments("headless");
+            webDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), chromeOptions);
+            //webDriver = new ChromeDriver("C:\\selGrid");
         }
 
         //"Check work activity"
