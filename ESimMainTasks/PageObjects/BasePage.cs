@@ -16,7 +16,6 @@ namespace ESimMainTasks.PageObjects
 
         public BasePage SetLoginButton()
         {
-            //WaitAndClick(LoginButton);
             ClickElement(LoginButton);
             return this;
         }
@@ -25,7 +24,7 @@ namespace ESimMainTasks.PageObjects
 
         public BasePage SetLoginInput(string text)
         {
-            WaitAndSendText(LoginInput, text);
+            SendElementText(LoginInput, text);
             return this;
         }
 
@@ -33,7 +32,7 @@ namespace ESimMainTasks.PageObjects
 
         public BasePage SetPasswordInput(string text)
         {
-            WaitAndSendText(PasswordInput, text);
+            SendElementText(PasswordInput, text);
             return this;
         }
 
@@ -42,22 +41,7 @@ namespace ESimMainTasks.PageObjects
 
         public void SetZalogujButton()
         {
-            //WaitAndClick(ZalogujButton);
             ClickElement(ZalogujButton);
-        }
-
-
-        //private void WaitAndClick(By bySelector)
-        //{
-        //    Thread.Sleep(1000);
-        //    WebDriver.FindElement(bySelector).Click();
-        //    //webElement.Click();
-        //}
-
-        private void WaitAndSendText(By bySelector, string text)
-        {
-            Thread.Sleep(1000);
-            WebDriver.FindElement(bySelector).SendKeys(text);
         }
 
 

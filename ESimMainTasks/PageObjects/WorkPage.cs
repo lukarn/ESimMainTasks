@@ -16,28 +16,18 @@ namespace ESimMainTasks.PageObjects
             this.WebDriver = webDriver;
         }
 
-        //@FindBy(css = "button#workButton")
-        //private WebElement workButton;
-        //[FindsBy(How = How.CssSelector, Using = "button#workButton")]
-        //private IWebElement pracujButton { get; set; }
         private static By PracujButton => By.CssSelector("button#workButton");
 
         public WorkPage SetPracujButton()
         {
-            //WaitAndClick(this.pracujButton);
             ClickElement(PracujButton);
             return this;
         }
 
-        //        @FindBy(css = "#productionReportTable>tbody>tr>#productionDisplayInTable")
-        //private WebElement workProductionResult;
-        //[FindsBy(How = How.CssSelector, Using = "#productionReportTable>tbody>tr>#productionDisplayInTable")]
-        //private IWebElement workProductionResult { get; set; }
         private static By WorkProductionResult => By.CssSelector("#productionReportTable>tbody>tr>#productionDisplayInTable");
 
         private string GetWorkProductionResult()
         {
-            //return this.workProductionResult.Text;
             return GetElementText(WorkProductionResult);
         }
 
@@ -58,21 +48,6 @@ namespace ESimMainTasks.PageObjects
                 return false;
             }
         }
-
-
-        //private void WaitAndClick(IWebElement webElement)
-        //{
-        //    Thread.Sleep(1000);
-        //    webElement.Click();
-        //}
-
-
-
-
-
-
-
-
 
 
 

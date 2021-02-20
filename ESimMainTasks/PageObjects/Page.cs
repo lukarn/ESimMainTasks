@@ -31,12 +31,14 @@ namespace ESimMainTasks.PageObjects
             return GetElement(bySelector).Text;
         }
 
+        protected void SendElementText(By bySelector, string text)
+        {
+            WaitForClickable(bySelector, DefaultTimeout);
+            GetElement(bySelector).SendKeys(text);
+        }
+
         protected void WaitForClickable(By bySelector, int timeout)
         {
-            //new WebDriverWait(WebDriver, TimeSpan.FromSeconds(timeout)).Until(SeleniumExtras.ExpectedConditions.ElementToBeClickable(bySelector));
-            //WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(timeout));
-            //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(bySelector));
-
             new WebDriverWait(WebDriver, TimeSpan.FromSeconds(timeout)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(bySelector));
         }
 
@@ -56,18 +58,7 @@ namespace ESimMainTasks.PageObjects
             new WebDriverWait(WebDriver, TimeSpan.FromSeconds(timeout)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(bySelector));
         }
 
-        //private void WaitAndClick(By bySelector)
-        //{
-        //    Thread.Sleep(1000);
-        //    webDriver.FindElement(bySelector).Click();
-        //    //webElement.Click();
-        //}
 
-        //private void WaitAndSendText(By bySelector, string text)
-        //{
-        //    Thread.Sleep(1000);
-        //    webDriver.FindElement(bySelector).SendKeys(text);
-        //}
 
     }
 }

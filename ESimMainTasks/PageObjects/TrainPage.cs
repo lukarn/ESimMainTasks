@@ -15,19 +15,14 @@ namespace ESimMainTasks.PageObjects
             this.WebDriver = webDriver;
         }
 
-        //[FindsBy(How = How.CssSelector, Using = "button#trainButton")]
-        //private IWebElement trenujButton { get; set; }
         private static By TrenujButton => By.CssSelector("button#trainButton");
 
         public TrainPage SetTrenujButton()
         {
-            //WaitAndClick(this.trenujButton);
             ClickElement(TrenujButton);
             return this;
         }
 
-        //[FindsBy(How = How.CssSelector, Using = ".timeCountdown.greenFont")]
-        //private IWebElement timeCountdown { get; set; }
         private static By TimeCountdown => By.CssSelector(".timeCountdown.greenFont");
 
         private string GetTimeCountdown()
@@ -52,19 +47,6 @@ namespace ESimMainTasks.PageObjects
                 return false;
             }
         }
-
-
-        //private void WaitAndClick(IWebElement webElement)
-        //{
-        //    Thread.Sleep(1000);
-        //    webElement.Click();
-        //}
-
-
-
-
-
-
 
 
 
