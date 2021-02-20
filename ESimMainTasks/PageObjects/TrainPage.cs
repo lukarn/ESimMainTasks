@@ -1,40 +1,38 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 using System;
 using System.Diagnostics;
 using System.Threading;
-using FindsByAttribute = SeleniumExtras.PageObjects.FindsByAttribute;
-using How = SeleniumExtras.PageObjects.How;
 
 namespace ESimMainTasks.PageObjects
 {
-    class TrainPage
+    class TrainPage : Page
     {
-        private IWebDriver webDriver;
+        private IWebDriver WebDriver;
 
-        public TrainPage(IWebDriver webDriver)
+        public TrainPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.webDriver = webDriver;
-
-            PageFactory.InitElements(webDriver, this);
+            this.WebDriver = webDriver;
         }
 
-        [FindsBy(How = How.CssSelector, Using = "button#trainButton")]
-        private IWebElement trenujButton { get; set; }
+        //[FindsBy(How = How.CssSelector, Using = "button#trainButton")]
+        //private IWebElement trenujButton { get; set; }
+        private static By TrenujButton => By.CssSelector("button#trainButton");
 
         public TrainPage SetTrenujButton()
         {
-            WaitAndClick(this.trenujButton);
+            //WaitAndClick(this.trenujButton);
+            ClickElement(TrenujButton);
             return this;
         }
 
-        [FindsBy(How = How.CssSelector, Using = ".timeCountdown.greenFont")]
-        private IWebElement timeCountdown { get; set; }
+        //[FindsBy(How = How.CssSelector, Using = ".timeCountdown.greenFont")]
+        //private IWebElement timeCountdown { get; set; }
+        private static By TimeCountdown => By.CssSelector(".timeCountdown.greenFont");
 
         private string GetTimeCountdown()
         {
-            return this.timeCountdown.Text;
+            return GetElementText(TimeCountdown);
         }
 
         public bool TrainCheck()
@@ -56,11 +54,11 @@ namespace ESimMainTasks.PageObjects
         }
 
 
-        private void WaitAndClick(IWebElement webElement)
-        {
-            Thread.Sleep(1000);
-            webElement.Click();
-        }
+        //private void WaitAndClick(IWebElement webElement)
+        //{
+        //    Thread.Sleep(1000);
+        //    webElement.Click();
+        //}
 
 
 

@@ -1,44 +1,44 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 using System;
 using System.Diagnostics;
 using System.Threading;
-using FindsByAttribute = SeleniumExtras.PageObjects.FindsByAttribute;
-using How = SeleniumExtras.PageObjects.How;
+
 
 namespace ESimMainTasks.PageObjects
 {
-    class WorkPage
+    class WorkPage : Page
     {
-        private IWebDriver webDriver;
+        private IWebDriver WebDriver;
 
-        public WorkPage(IWebDriver webDriver)
+        public WorkPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.webDriver = webDriver;
-
-            PageFactory.InitElements(webDriver, this);
+            this.WebDriver = webDriver;
         }
 
         //@FindBy(css = "button#workButton")
         //private WebElement workButton;
-        [FindsBy(How = How.CssSelector, Using = "button#workButton")]
-        private IWebElement pracujButton { get; set; }
+        //[FindsBy(How = How.CssSelector, Using = "button#workButton")]
+        //private IWebElement pracujButton { get; set; }
+        private static By PracujButton => By.CssSelector("button#workButton");
 
         public WorkPage SetPracujButton()
         {
-            WaitAndClick(this.pracujButton);
+            //WaitAndClick(this.pracujButton);
+            ClickElement(PracujButton);
             return this;
         }
 
         //        @FindBy(css = "#productionReportTable>tbody>tr>#productionDisplayInTable")
         //private WebElement workProductionResult;
-        [FindsBy(How = How.CssSelector, Using = "#productionReportTable>tbody>tr>#productionDisplayInTable")]
-        private IWebElement workProductionResult { get; set; }
+        //[FindsBy(How = How.CssSelector, Using = "#productionReportTable>tbody>tr>#productionDisplayInTable")]
+        //private IWebElement workProductionResult { get; set; }
+        private static By WorkProductionResult => By.CssSelector("#productionReportTable>tbody>tr>#productionDisplayInTable");
 
         private string GetWorkProductionResult()
         {
-            return this.workProductionResult.Text;
+            //return this.workProductionResult.Text;
+            return GetElementText(WorkProductionResult);
         }
 
         public bool WorkCheck()
@@ -60,11 +60,11 @@ namespace ESimMainTasks.PageObjects
         }
 
 
-        private void WaitAndClick(IWebElement webElement)
-        {
-            Thread.Sleep(1000);
-            webElement.Click();
-        }
+        //private void WaitAndClick(IWebElement webElement)
+        //{
+        //    Thread.Sleep(1000);
+        //    webElement.Click();
+        //}
 
 
 

@@ -1,32 +1,23 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using SeleniumExtras.PageObjects;
-
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using FindsByAttribute = SeleniumExtras.PageObjects.FindsByAttribute;
-using How = SeleniumExtras.PageObjects.How;
 
 namespace ESimMainTasks.PageObjects
 {
-    class BasePage
+    class BasePage : Page
     {
-        private IWebDriver webDriver;
+        private IWebDriver WebDriver;
 
-        public BasePage(IWebDriver webDriver)
+        public BasePage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.webDriver = webDriver;
-
-            PageFactory.InitElements(webDriver, this);
+            this.WebDriver = webDriver;
         }
 
         private static By LoginButton => By.Id("login_section_btn");
 
         public BasePage SetLoginButton()
         {
-            WaitAndClick(LoginButton);
+            //WaitAndClick(LoginButton);
+            ClickElement(LoginButton);
             return this;
         }
 
@@ -51,21 +42,22 @@ namespace ESimMainTasks.PageObjects
 
         public void SetZalogujButton()
         {
-            WaitAndClick(ZalogujButton);
+            //WaitAndClick(ZalogujButton);
+            ClickElement(ZalogujButton);
         }
 
 
-        private void WaitAndClick(By bySelector)
-        {
-            Thread.Sleep(1000);
-            webDriver.FindElement(bySelector).Click();
-            //webElement.Click();
-        }
+        //private void WaitAndClick(By bySelector)
+        //{
+        //    Thread.Sleep(1000);
+        //    WebDriver.FindElement(bySelector).Click();
+        //    //webElement.Click();
+        //}
 
         private void WaitAndSendText(By bySelector, string text)
         {
             Thread.Sleep(1000);
-            webDriver.FindElement(bySelector).SendKeys(text);
+            WebDriver.FindElement(bySelector).SendKeys(text);
         }
 
 
