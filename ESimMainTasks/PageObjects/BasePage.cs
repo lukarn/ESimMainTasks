@@ -5,11 +5,11 @@ namespace ESimMainTasks.PageObjects
 {
     class BasePage : Page
     {
-        private IWebDriver WebDriver;
+        //private IWebDriver WebDriver;
 
         public BasePage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.WebDriver = webDriver;
+            //this.WebDriver = webDriver;
         }
 
         private static By LoginButton => By.Id("login_section_btn");

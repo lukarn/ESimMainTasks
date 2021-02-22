@@ -51,7 +51,6 @@ namespace ESimMainTasks.Steps
         [Given(@"login to service")]
         public void GivenLogin()
         {
-            //var basePage = new BasePage(WebDriver, AppSettings);
 
             basePage.SetLoginButton()
                 .SetLoginInput("sledzik")
@@ -65,7 +64,6 @@ namespace ESimMainTasks.Steps
         [When(@"click Train task button if it is present")]
         public void WhenClickTrainButtonIfItIsPresent()
         {
-            //var mainPage = new MainPage(WebDriver, AppSettings);
             try
             {
                 mainPage.SetTrainTaskButtonn();
@@ -80,7 +78,6 @@ namespace ESimMainTasks.Steps
         [When(@"click Work task button if it is present")]
         public void WhenClickWorkTaskButtonIfItIsPresent()
         {
-            //var mainPage = new MainPage(WebDriver, AppSettings);
             try
             {
                 mainPage.SetWorkTaskButton();
@@ -97,7 +94,6 @@ namespace ESimMainTasks.Steps
         [When(@"click Trenuj button if it is present")]
         public void WhenClickTrainButton()
         {
-            //var trainPage = new TrainPage(WebDriver, AppSettings);
             try
             {
                 trainPage.SetTrenujButton();
@@ -110,7 +106,6 @@ namespace ESimMainTasks.Steps
         [When(@"click Pracuj button if it is present")]
         public void WhenClickPracujButtonIfItIsPresent()
         {
-            //var workPage = new WorkPage(WebDriver, AppSettings);
             try
             {
                 workPage.SetPracujButton();
@@ -125,7 +120,6 @@ namespace ESimMainTasks.Steps
         [Then(@"the timer to next train should be present")]
         public void ThenTheTimerToNextTrainShouldBePresent()
         {
-            //var trainPage = new TrainPage(WebDriver, AppSettings);
             trainPage.TrainCheck().Should().BeTrue();
 
         }
@@ -133,7 +127,6 @@ namespace ESimMainTasks.Steps
         [Then(@"check if work results are present")]
         public void ThenCheckIfWorkResultsArePresent()
         {
-            //var workPage = new WorkPage(WebDriver, AppSettings);
             workPage.WorkCheck().Should().BeTrue();
         }
 

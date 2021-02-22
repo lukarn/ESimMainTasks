@@ -8,11 +8,11 @@ namespace ESimMainTasks.PageObjects
 {
     class MainPage : Page
     {
-        private IWebDriver WebDriver;
+        //private IWebDriver WebDriver;
 
         public MainPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.WebDriver = webDriver;
+            //this.WebDriver = webDriver;
         }
 
         private static By TrainTaskButton => By.CssSelector("#taskButtonTrain>a");

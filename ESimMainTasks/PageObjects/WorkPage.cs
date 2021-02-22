@@ -9,11 +9,11 @@ namespace ESimMainTasks.PageObjects
 {
     class WorkPage : Page
     {
-        private IWebDriver WebDriver;
+        //private IWebDriver WebDriver;
 
         public WorkPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            this.WebDriver = webDriver;
+            //this.WebDriver = webDriver;
         }
 
         private static By PracujButton => By.CssSelector("button#workButton");
