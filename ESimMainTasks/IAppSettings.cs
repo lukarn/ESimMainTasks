@@ -1,4 +1,4 @@
-﻿namespace ESimMainTasks.PageObjects
+﻿namespace ESimMainTasks
 {
     public interface IAppSettings
     {

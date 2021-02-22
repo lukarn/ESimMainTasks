@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 using System.Threading;
 
 namespace ESimMainTasks.PageObjects
@@ -10,7 +11,25 @@ namespace ESimMainTasks.PageObjects
         public BasePage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
             //this.WebDriver = webDriver;
+            GoToBasePage();
         }
+
+        /// <summary>
+        /// //////////////////////////////new here!!!!!!!!!!!!
+        /// </summary>
+        public void GoToBasePage()
+        {
+            WebDriver.Navigate().GoToUrl(new Uri(Settings.BasePageUrl));
+            WaitUntilPageIsDisplayed();
+        }
+
+        private void WaitUntilPageIsDisplayed()
+        {
+            //WaitForVisible(LoginButton);
+        }
+        /// <summary>
+        /// ////////////////end of new :)
+        /// </summary>
 
         private static By LoginButton => By.Id("login_section_btn");
 

@@ -7,6 +7,7 @@ using System.Threading;
 using FluentAssertions;
 using System.IO;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace ESimMainTasks.Steps
 {
@@ -29,6 +30,9 @@ namespace ESimMainTasks.Steps
             WebDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), chromeOptions);
             //webDriver = new ChromeDriver("C:\\selGrid");
 
+            var jsonSettingsContent = File.ReadAllText("C:\\c-sharp-projects\\ESimMainTasks\\ESimMainTasks\\AppSettings.json");
+            AppSettings = JsonConvert.DeserializeObject<AppSettings>(jsonSettingsContent);
+
             basePage = new BasePage(WebDriver, AppSettings);
             mainPage = new MainPage(WebDriver, AppSettings);
             trainPage = new TrainPage(WebDriver, AppSettings);
@@ -46,6 +50,7 @@ namespace ESimMainTasks.Steps
         public void GivenGoToBasePage()
         {
             WebDriver.Url = "https://primera.e-sim.org/";
+            //basePage.GoToBasePage();
         }
         
         [Given(@"login to service")]
