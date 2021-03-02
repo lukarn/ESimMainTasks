@@ -8,11 +8,12 @@ using FluentAssertions;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace ESimMainTasks.Steps
 {
     [Binding]
-    public class ESimMainTasksSteps
+    public sealed class ESimMainTasksSteps
     {
         IWebDriver WebDriver;
         IAppSettings AppSettings;
@@ -30,7 +31,8 @@ namespace ESimMainTasks.Steps
             WebDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), chromeOptions);
             //webDriver = new ChromeDriver("C:\\selGrid");
 
-            var jsonSettingsContent = File.ReadAllText("C:\\c-sharp-projects\\ESimMainTasks\\ESimMainTasks\\AppSettings.json");
+            var jsonSettingsContent = File.ReadAllText(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\ESimMainTasks\\ESimMainTasks\\AppSettings.json");
+            //var jsonSettingsContent = File.ReadAllText("AppSettings.json");
             AppSettings = JsonConvert.DeserializeObject<AppSettings>(jsonSettingsContent);
 
             basePage = new BasePage(WebDriver, AppSettings);
@@ -49,7 +51,7 @@ namespace ESimMainTasks.Steps
         [Given(@"go to BasePage")]
         public void GivenGoToBasePage()
         {
-            WebDriver.Url = "https://primera.e-sim.org/";
+            //WebDriver.Url = "https://primera.e-sim.org/";
             //basePage.GoToBasePage();
         }
         

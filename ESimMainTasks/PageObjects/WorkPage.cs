@@ -7,13 +7,15 @@ using System.Threading;
 
 namespace ESimMainTasks.PageObjects
 {
-    class WorkPage : Page
+    sealed class WorkPage : Page
     {
-        //private IWebDriver WebDriver;
-
         public WorkPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            //this.WebDriver = webDriver;
+        }
+
+        public override void WaitUntilPageIsDisplayed()
+        {
+            WaitForVisible(PracujButton);
         }
 
         private static By PracujButton => By.CssSelector("button#workButton");

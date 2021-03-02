@@ -1,18 +1,16 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-
-using System.Threading;
-
 
 namespace ESimMainTasks.PageObjects
 {
-    class MainPage : Page
+    sealed class MainPage : Page
     {
-        //private IWebDriver WebDriver;
-
         public MainPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            //this.WebDriver = webDriver;
+        }
+
+        public override void WaitUntilPageIsDisplayed()
+        {
+            WaitForVisible(TrainTaskButton);
         }
 
         private static By TrainTaskButton => By.CssSelector("#taskButtonTrain>a");

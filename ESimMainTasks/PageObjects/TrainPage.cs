@@ -6,13 +6,15 @@ using System.Threading;
 
 namespace ESimMainTasks.PageObjects
 {
-    class TrainPage : Page
+    sealed class TrainPage : Page
     {
-        //private IWebDriver WebDriver;
-
         public TrainPage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            //this.WebDriver = webDriver;
+        }
+
+        public override void WaitUntilPageIsDisplayed()
+        {
+            WaitForVisible(TrenujButton);
         }
 
         private static By TrenujButton => By.CssSelector("button#trainButton");

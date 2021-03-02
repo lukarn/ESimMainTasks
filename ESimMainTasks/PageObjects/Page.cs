@@ -14,6 +14,8 @@ namespace ESimMainTasks.PageObjects
 
         private const int DefaultTimeout = 10;
 
+        public abstract void WaitUntilPageIsDisplayed();
+
         protected Page(IWebDriver webDriver, IAppSettings settings)
         {
             Settings = settings;
@@ -51,6 +53,11 @@ namespace ESimMainTasks.PageObjects
         {
             WaitForVisible(bySelector, defaultTimeout);
             return WebDriver.FindElement(bySelector);
+        }
+
+        protected void WaitForVisible(By bySelector)
+        {
+            WaitForVisible(bySelector, DefaultTimeout);
         }
 
         private void WaitForVisible(By bySelector, int timeout)
