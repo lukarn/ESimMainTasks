@@ -1,14 +1,12 @@
-﻿using System;
-using TechTalk.SpecFlow;
+﻿using ESimMainTasks.PageObjects;
+using FluentAssertions;
+using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using ESimMainTasks.PageObjects;
-using System.Threading;
-using FluentAssertions;
+using System;
 using System.IO;
 using System.Reflection;
-using Newtonsoft.Json;
-using System.Linq;
+using TechTalk.SpecFlow;
 
 namespace ESimMainTasks.Steps
 {
@@ -60,8 +58,9 @@ namespace ESimMainTasks.Steps
         {
 
             basePage.SetLoginButton()
-                .SetLoginInput("sledzik")
-                .SetPasswordInput("dieh@rd")
+                //.SetLoginInput("sledzik") //AppSettings
+                .SetLoginInput(AppSettings.TestUserName)
+                .SetPasswordInput(AppSettings.TestUserPassword) //"dieh@rd"
                 .SetZalogujButton();
 
 

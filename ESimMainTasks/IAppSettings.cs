@@ -6,5 +6,7 @@
 
         string TestUserName { get; set; }
 
+        string TestUserPassword { get; set; }
+
     }
 }
