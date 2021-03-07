@@ -7,7 +7,6 @@ namespace ESimMainTasks.PageObjects
     {
         public BasePage(IWebDriver webDriver, IAppSettings settings) : base(webDriver, settings)
         {
-            GoToBasePage();
         }
 
         public void GoToBasePage()

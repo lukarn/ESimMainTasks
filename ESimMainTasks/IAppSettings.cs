@@ -8,5 +8,7 @@
 
         string TestUserPassword { get; set; }
 
+        string Browser { get; set; }
+
     }
 }

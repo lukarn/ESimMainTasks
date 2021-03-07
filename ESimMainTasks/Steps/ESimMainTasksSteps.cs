@@ -2,11 +2,10 @@
 using FluentAssertions;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
 using System.IO;
-using System.Reflection;
 using TechTalk.SpecFlow;
+using static ESimMainTasks.ESimAppHooks;
 
 namespace ESimMainTasks.Steps
 {
@@ -24,14 +23,10 @@ namespace ESimMainTasks.Steps
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("headless");
-            WebDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), chromeOptions);
-            //webDriver = new ChromeDriver("C:\\selGrid");
-
             var jsonSettingsContent = File.ReadAllText(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\ESimMainTasks\\ESimMainTasks\\AppSettings.json");
-            //var jsonSettingsContent = File.ReadAllText("AppSettings.json");
             AppSettings = JsonConvert.DeserializeObject<AppSettings>(jsonSettingsContent);
+
+            WebDriver = GetWebDriver(AppSettings.Browser);
 
             basePage = new BasePage(WebDriver, AppSettings);
             mainPage = new MainPage(WebDriver, AppSettings);
@@ -39,7 +34,6 @@ namespace ESimMainTasks.Steps
             workPage = new WorkPage(WebDriver, AppSettings);
         }
 
-        //"Check work activity"
         [AfterScenario()]
         public void AfterScenario()
         {
@@ -49,8 +43,7 @@ namespace ESimMainTasks.Steps
         [Given(@"go to BasePage")]
         public void GivenGoToBasePage()
         {
-            //WebDriver.Url = "https://primera.e-sim.org/";
-            //basePage.GoToBasePage();
+            basePage.GoToBasePage();
         }
         
         [Given(@"login to service")]
@@ -58,9 +51,8 @@ namespace ESimMainTasks.Steps
         {
 
             basePage.SetLoginButton()
-                //.SetLoginInput("sledzik") //AppSettings
                 .SetLoginInput(AppSettings.TestUserName)
-                .SetPasswordInput(AppSettings.TestUserPassword) //"dieh@rd"
+                .SetPasswordInput(AppSettings.TestUserPassword)
                 .SetZalogujButton();
 
 
