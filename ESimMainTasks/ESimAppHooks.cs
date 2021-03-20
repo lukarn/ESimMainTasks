@@ -1,15 +1,13 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
+using OpenQA.Selenium.Firefox;
 using System.Configuration;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace ESimMainTasks
 {
-    class ESimAppHooks
+    sealed class ESimAppHooks
     {
         public static IWebDriver GetWebDriver(string driverToLaunch)
         {
@@ -23,9 +21,10 @@ namespace ESimMainTasks
 
         private static IWebDriver LaunchFirefox()
         {
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("headless");
-            return new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), chromeOptions);
+            FirefoxOptions options = new FirefoxOptions();
+            options.AddArguments("--headless");
+
+            return new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), options);
 
         }
 
