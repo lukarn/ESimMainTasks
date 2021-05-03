@@ -22,7 +22,7 @@ namespace ESimMainTasks
         private static IWebDriver LaunchFirefox()
         {
             FirefoxOptions options = new FirefoxOptions();
-            options.AddArguments("--headless");
+            //options.AddArguments("--headless");
 
             return new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), options);
 
